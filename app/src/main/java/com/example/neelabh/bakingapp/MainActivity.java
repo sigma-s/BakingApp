@@ -20,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mRecyclerView.setHasFixedSize(true);
+        //mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         data = new ArrayList<DataModel>();
+        String version = MyData.nameArray[0];
+        int count = MyData.nameArray.length;
         for(int i=0;i<MyData.nameArray.length;i++){
             data.add(new DataModel(
                     MyData.nameArray[i],

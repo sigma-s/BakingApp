@@ -26,6 +26,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.cardTitle=itemView.findViewById(R.id.card_title);
+            this.cardImage=itemView.findViewById(R.id.card_image);
         }
     }
 
