@@ -1,5 +1,6 @@
 package com.example.neelabh.bakingapp;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent myIntent = new Intent(this,RecipeActivity.class);
+                    startActivity(myIntent);
+                }
+            });
             this.cardTitle=itemView.findViewById(R.id.card_title);
             this.cardImage=itemView.findViewById(R.id.card_image);
         }

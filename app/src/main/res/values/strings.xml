@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Baking App</string>
     <string name = "android_name">Android Name</string>
+    <string name="sample_recipe_step">Press the crust into baking form</string>
 </resources>
