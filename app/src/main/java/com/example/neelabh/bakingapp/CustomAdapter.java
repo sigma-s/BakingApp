@@ -1,5 +1,6 @@
 package com.example.neelabh.bakingapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private ArrayList<DataModel> dataSet;
+    private static Context mContext;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -27,26 +30,25 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            //this.cardTitle=itemView.findViewById(R.id.card_title);
+            //this.cardImage=itemView.findViewById(R.id.card_image);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    Intent myIntent = new Intent(this,RecipeActivity.class);
-                    startActivity(myIntent);
+                    MyItemClick(v);
                 }
             });
-            this.cardTitle=itemView.findViewById(R.id.card_title);
-            this.cardImage=itemView.findViewById(R.id.card_image);
         }
     }
 
-    public CustomAdapter(ArrayList<DataModel> data){
+    public CustomAdapter(Context context, ArrayList<DataModel> data){
         this.dataSet = data;
+        mContext = context;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cards_layout,parent,false);
-        //view.setOnClickListener(MainActivity.myOnClickListener);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
@@ -63,6 +65,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public int getItemCount(){
         return dataSet.size();
+    }
+
+    private static void MyItemClick(View v){
+        Intent mIntent = new Intent(mContext,RecipeActivity.class);
+        mContext.startActivity(mIntent);
     }
 
 }

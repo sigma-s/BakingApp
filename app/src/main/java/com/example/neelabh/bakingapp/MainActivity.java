@@ -6,6 +6,8 @@ import android.support.v7.widget.CardView;
 import butterknife.ButterKnife;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
                     MyData.drawableArray[i]));
         }
 
-        mAdapter = new CustomAdapter(data);
+        mAdapter = new CustomAdapter(this,data);
         mRecyclerView.setAdapter(mAdapter);
 
     }
+
 }

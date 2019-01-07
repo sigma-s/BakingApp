@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 
 public class RecipeActivity extends AppCompatActivity {
-    @butterknife.BindView(R.id.recipe_recycler_view)
-    private RecyclerView mRecyclerView;
+    @butterknife.BindView(R.id.recipe_recycler_view) RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static ArrayList<String> data;
@@ -30,7 +29,7 @@ public class RecipeActivity extends AppCompatActivity {
             data.add(MyData.recipeStepsArray[i]);
         }
 
-        //mAdapter = new RecipeAdapter(data);
+        mAdapter = new RecipeAdapter(data);
         mRecyclerView.setAdapter(mAdapter);
 
     }
