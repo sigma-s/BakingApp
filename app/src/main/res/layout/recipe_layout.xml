@@ -11,5 +11,4 @@
         android:text="@string/sample_recipe_step"
         android:textAppearance="?android:textAppearanceMedium"
         android:layout_margin="@dimen/card_margin"/>
-
 </LinearLayout>

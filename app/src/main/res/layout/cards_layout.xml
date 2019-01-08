@@ -33,9 +33,6 @@
                 android:text="@string/android_name"
                 android:textAppearance="?android:textAppearanceLarge"
                 />
-
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
-
 </LinearLayout>
