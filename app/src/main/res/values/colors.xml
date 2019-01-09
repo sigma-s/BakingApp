@@ -6,4 +6,5 @@
 
     <color name="cardBackgroundColor">#FFFFFF</color>
     <color name="mainActivityBackground">#E0E0E0</color>
+    <color name="black">#000000</color>
 </resources>

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mAdapter = new CustomAdapter(this,data);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
         mRecyclerView.setAdapter(mAdapter);
 
     }
