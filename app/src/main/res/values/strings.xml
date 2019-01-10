@@ -3,4 +3,10 @@
     <string name = "android_name">Android Name</string>
     <string name="sample_recipe_step">Press the crust into baking form</string>
     <string name="ingredient_list">Ingredients list:</string>
+    <string name="bulleted_list">
+        Ingredients list:\n
+        <li>First item</li>\n
+        <li>Second item</li>\n
+        <li>Third item</li>
+    </string>
 </resources>

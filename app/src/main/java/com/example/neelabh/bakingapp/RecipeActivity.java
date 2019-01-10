@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class RecipeActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static ArrayList<String> data;
+    private String htmlString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,14 @@ public class RecipeActivity extends AppCompatActivity {
         for(int i=0;i<MyData.recipeStepsArray.length;i++){
             data.add(MyData.recipeStepsArray[i]);
         }
+
+        htmlString = "Ingredients:<br/>";
+
+        for(int i=0;i<MyData.ingredientArray.length;i++){
+            htmlString = htmlString + "- "+ MyData.ingredientArray[i] + "<br/>";
+        }
+
+        mTextView.setText(Html.fromHtml(htmlString));
 
         mAdapter = new RecipeAdapter(data);
         mRecyclerView.addItemDecoration(
