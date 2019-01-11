@@ -8,4 +8,8 @@ public class MyData {
     static String[] ingredientArray = {"Graham Cracker Crumbs (2 CUP)","Unsalted butter, melted (6 TBLSP)","Granulated sugar (0.5 CUP)","Salt",
                                     "Vanilla (5 TBLSP)","Nutella/other choco-hazelnut spread (1K)","Mascapone Cheese (room temp.) (500 G)",
                                     "Heavy cream (cold) (1 CUP)","Cream cheese (softened) (4 OZ)"};
+    static String description = "2. Whisk the graham cracker crumbs, 50 grams (1/4 cup) of sugar, and 1/2 teaspoon of salt together " +
+            "in a medium bowl. Pour the melted butter and 1 teaspoon of vanilla into the dry ingredients and stir together until " +
+            "evenly mixed.";
+    static String videoUrl = "https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffd9a6_2-mix-sugar-crackers-creampie/2-mix-sugar-crackers-creampie.mp4";
 }
