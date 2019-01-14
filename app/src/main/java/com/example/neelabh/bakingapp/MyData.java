@@ -11,5 +11,5 @@ public class MyData {
     static String description = "2. Whisk the graham cracker crumbs, 50 grams (1/4 cup) of sugar, and 1/2 teaspoon of salt together " +
             "in a medium bowl. Pour the melted butter and 1 teaspoon of vanilla into the dry ingredients and stir together until " +
             "evenly mixed.";
-    static String videoUrl = "https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffd9a6_2-mix-sugar-crackers-creampie/2-mix-sugar-crackers-creampie.mp4";
+    static String videoUrl = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
 }
