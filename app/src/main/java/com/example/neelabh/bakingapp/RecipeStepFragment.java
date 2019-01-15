@@ -1,9 +1,13 @@
 package com.example.neelabh.bakingapp;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -29,29 +33,35 @@ import com.google.android.exoplayer2.util.Util;
 
 import butterknife.ButterKnife;
 import butterknife.BindView;
+import butterknife.Unbinder;
 
-public class RecipeStepActivity extends AppCompatActivity {
+public class RecipeStepFragment extends Fragment {
     @BindView(R.id.recipe_step_detail)
     TextView mRecipeDetailView;
     @BindView(R.id.receipe_step_video)
     PlayerView playerView;
     private SimpleExoPlayer player;
+    private Unbinder unbinder;
 
     private long playbackPosition = 0;
     private int currentWindow = 0;
     private boolean playWhenReady = true;
+    private Context mContext;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater,ViewGroup container,
+                             Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_step_layout);
-        ButterKnife.bind(this);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.recipe_step_layout,container,false);
+        mContext = getActivity();
+        ButterKnife.bind(this,rootView);
         mRecipeDetailView.setText(MyData.description);
+        return rootView;
     }
 
     private void initializePlayer(){
         player = ExoPlayerFactory.newSimpleInstance(
-                this);
+                mContext);
         playerView.setPlayer(player);
         player.setPlayWhenReady(playWhenReady);
         player.seekTo(currentWindow,playbackPosition);
@@ -61,8 +71,8 @@ public class RecipeStepActivity extends AppCompatActivity {
     }
 
     private MediaSource buildMediaSource(Uri uri){
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this,this.getString(R.string.app_name)));
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(mContext,
+                Util.getUserAgent(mContext,mContext.getString(R.string.app_name)));
         return new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(uri);
 
     }
@@ -98,6 +108,12 @@ public class RecipeStepActivity extends AppCompatActivity {
         if(Util.SDK_INT>23){
             releasePlayer();
         }
+    }
+
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     private void releasePlayer(){
