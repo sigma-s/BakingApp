@@ -68,8 +68,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     private static void MyItemClick(View v){
-        //Intent mIntent = new Intent(mContext,RecipeActivity.class);
-        Intent mIntent = new Intent(mContext,RecipeStepSliderActivity.class);
+        Intent mIntent = new Intent(mContext,RecipeActivity.class);
+        //Intent mIntent = new Intent(mContext,RecipeStepSliderActivity.class);
         mContext.startActivity(mIntent);
     }
 

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Baking App</string>
     <string name = "android_name">Android Name</string>
     <string name="sample_recipe_step">Press the crust into baking form</string>
@@ -9,4 +9,5 @@
         <li>Second item</li>\n
         <li>Third item</li>
     </string>
+    <string name="recipe_step_label">Step: <xliff:g id="count">%d</xliff:g></string>
 </resources>

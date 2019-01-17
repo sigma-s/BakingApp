@@ -41,11 +41,11 @@ public class RecipeStepFragment extends Fragment {
     @BindView(R.id.receipe_step_video)
     PlayerView playerView;
     private SimpleExoPlayer player;
-    private Unbinder unbinder;
+    //private Unbinder unbinder;
 
     private long playbackPosition = 0;
     private int currentWindow = 0;
-    private boolean playWhenReady = true;
+    private boolean playWhenReady = false;
     private Context mContext;
 
     @Override
@@ -113,7 +113,7 @@ public class RecipeStepFragment extends Fragment {
     @Override
     public void onDestroyView(){
         super.onDestroyView();
-        unbinder.unbind();
+        releasePlayer();
     }
 
     private void releasePlayer(){
