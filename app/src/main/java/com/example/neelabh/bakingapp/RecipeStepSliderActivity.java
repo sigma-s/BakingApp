@@ -9,11 +9,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Locale;
 
 
-public class RecipeStepSliderActivity extends FragmentActivity {
+public class RecipeStepSliderActivity extends AppCompatActivity {
     private static final int NUM_PAGES = MyData.recipeStepsArray.length;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -28,6 +30,11 @@ public class RecipeStepSliderActivity extends FragmentActivity {
         mPager.setAdapter(mPagerAdapter);
         TabLayout mTabLayout = findViewById(R.id.recipe_step_tablayout);
         mTabLayout.setupWithViewPager(mPager);
+
+        ActionBar mActionBar = getSupportActionBar();
+        if(mActionBar!=null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -60,6 +67,12 @@ public class RecipeStepSliderActivity extends FragmentActivity {
         public CharSequence getPageTitle(int position){
             return String.format(Locale.US,tabTitle,position);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
 }
