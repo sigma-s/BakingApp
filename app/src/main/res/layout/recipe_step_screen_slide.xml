@@ -6,6 +6,9 @@
     android:orientation="vertical"
     >
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar_recipe_step"/>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/recipe_step_tablayout"
         android:layout_width="match_parent"

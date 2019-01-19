@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,10 +36,8 @@ public class RecipeActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        ActionBar mActionBar = getSupportActionBar();
-        if(mActionBar!=null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        Toolbar mToolbar = findViewById(R.id.toolbar_recipe);
+        setSupportActionBar(mToolbar);
 
 
         data = new ArrayList<String>();

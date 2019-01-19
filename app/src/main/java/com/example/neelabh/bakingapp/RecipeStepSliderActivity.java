@@ -11,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import java.util.Locale;
 
@@ -31,19 +32,8 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
         TabLayout mTabLayout = findViewById(R.id.recipe_step_tablayout);
         mTabLayout.setupWithViewPager(mPager);
 
-        ActionBar mActionBar = getSupportActionBar();
-        if(mActionBar!=null) {
-            mActionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    @Override
-    public void onBackPressed(){
-        if(mPager.getCurrentItem()==0){
-            super.onBackPressed();
-        } else {
-            mPager.setCurrentItem(mPager.getCurrentItem()-1);
-        }
+        Toolbar mToolbar = findViewById(R.id.toolbar_recipe_step);
+        setSupportActionBar(mToolbar);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -69,10 +59,5 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
 
 }

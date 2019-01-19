@@ -8,6 +8,7 @@ import butterknife.ButterKnife;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        Toolbar mToolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(mToolbar);
 
         data = new ArrayList<DataModel>();
         for(int i=0;i<MyData.nameArray.length;i++){
