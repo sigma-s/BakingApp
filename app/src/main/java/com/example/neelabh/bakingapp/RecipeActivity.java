@@ -39,6 +39,10 @@ public class RecipeActivity extends AppCompatActivity {
         Toolbar mToolbar = findViewById(R.id.toolbar_recipe);
         setSupportActionBar(mToolbar);
 
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         data = new ArrayList<String>();
         for(int i=0;i<MyData.recipeStepsArray.length;i++){
@@ -85,7 +89,7 @@ public class RecipeActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
-        finish();
+        onBackPressed();
         return true;
     }
 

@@ -1,6 +1,7 @@
 package com.example.neelabh.bakingapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import java.util.Locale;
 
@@ -34,6 +36,11 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
 
         Toolbar mToolbar = findViewById(R.id.toolbar_recipe_step);
         setSupportActionBar(mToolbar);
+
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -56,6 +63,25 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position){
             return String.format(Locale.US,tabTitle,position);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(this,RecipeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
