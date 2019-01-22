@@ -88,7 +88,7 @@ public class RecipeStepFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        hideSystemUi();
+        //hideSystemUi();
         if((Util.SDK_INT<=23 || player==null )){
             initializePlayer();
         }
