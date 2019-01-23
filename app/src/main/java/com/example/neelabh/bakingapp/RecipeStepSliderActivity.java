@@ -2,6 +2,7 @@ package com.example.neelabh.bakingapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Locale;
 
@@ -35,6 +37,8 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
         TabLayout mTabLayout = findViewById(R.id.recipe_step_tablayout);
         mTabLayout.setupWithViewPager(mPager);
 
+
+
         Toolbar mToolbar = findViewById(R.id.toolbar_recipe_step);
         setSupportActionBar(mToolbar);
 
@@ -42,6 +46,13 @@ public class RecipeStepSliderActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle("Baking App");
+        }
+
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation== Configuration.ORIENTATION_LANDSCAPE){
+            mTabLayout.setVisibility(View.GONE);
+            mToolbar.setVisibility(View.GONE);
+
         }
     }
 

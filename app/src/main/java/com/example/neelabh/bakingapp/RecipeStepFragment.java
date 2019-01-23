@@ -1,8 +1,10 @@
 package com.example.neelabh.bakingapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -47,6 +49,7 @@ public class RecipeStepFragment extends Fragment {
     private int currentWindow = 0;
     private boolean playWhenReady = false;
     private Context mContext;
+    private static final String TAG_IMAGE_URL = "TAG_IMAGE_URL";
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
@@ -57,6 +60,26 @@ public class RecipeStepFragment extends Fragment {
         ButterKnife.bind(this,rootView);
         mRecipeDetailView.setText(MyData.description);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        super.onViewCreated(view,savedInstanceState);
+
+        int orientation = getResources().getConfiguration().orientation;
+        String video = MyData.videoUrl;
+        if(video!=null && !video.isEmpty()){
+            if(orientation== Configuration.ORIENTATION_LANDSCAPE){
+                expandVideoView(playerView);
+                mRecipeDetailView.setVisibility(View.GONE);
+                hideSystemUi();
+            }
+        }
+    }
+
+    private void expandVideoView(PlayerView playerView){
+        playerView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+        playerView.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
     }
 
     private void initializePlayer(){
@@ -88,7 +111,6 @@ public class RecipeStepFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        //hideSystemUi();
         if((Util.SDK_INT<=23 || player==null )){
             initializePlayer();
         }
